@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Eliminar Servicio</h3>
+
+<p>¿Está seguro de eliminar: <strong>{{ servicio.nombre }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'servicio_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

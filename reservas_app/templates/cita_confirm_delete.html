@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Cancelar Cita</h3>
+
+<p>¿Eliminar la cita de <strong>{{ cita.cliente }}</strong> para <strong>{{ cita.servicio }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'cita_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

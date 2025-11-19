@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3 class="text-center mb-4 text-primary">Servicios</h3>
+
+<div class="text-center mb-3">
+    <a href="{% url 'servicio_create' %}" class="btn btn-primary">Agregar Servicio</a>
+</div>
+
+<div class="card mx-auto p-3" style="background-color:#2e3b4e; max-width:900px;">
+<table class="table table-hover table-bordered mb-0" style="background-color:#2e3b4e; color:white;">
+        <thead style="background-color:#3a506b;">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Duración (min)</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servicio in servicios %}
+            <tr>
+                <td>{{ servicio.nombre }}</td>
+                <td>{{ servicio.descripcion }}</td>
+                <td>{{ servicio.duracion }}</td>
+                <td>
+                    <a href="{% url 'servicio_update' servicio.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'servicio_delete' servicio.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No hay servicios registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

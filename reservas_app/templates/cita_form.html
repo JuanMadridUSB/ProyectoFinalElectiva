@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3 class="text-center mb-4 text-primary">
+    {{ form.instance.pk|yesno:"Editar Cita,Programar Cita" }}
+</h3>
+
+<div class="card mx-auto p-4" style="background-color:#2e3b4e; max-width:600px; color:white;">
+    <form method="post">
+        {% csrf_token %}
+        <div style="color:white;">
+            {{ form.as_p }}
+        </div>
+
+        <div class="text-center mt-3">
+            <button class="btn btn-success">Guardar</button>
+            <a href="{% url 'cita_list' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
